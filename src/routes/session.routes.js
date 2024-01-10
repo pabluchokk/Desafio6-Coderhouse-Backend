@@ -23,6 +23,8 @@ router.post("/register", async (req,res) => {
         password
     }
 
+    user.role = (email === "adminCoder@coder.com" && password === "adminCod3r123") ? "admin" : "usuario"
+
     let result = await userModel.create(user)
     res.send({
         status: "success",
@@ -43,8 +45,11 @@ router.post("/login", async (req, res) => {
     req.session.user = {
         full_name: `${user.first_name} ${user.last_name}`,
         email: `${user.email}`,
-        age: `${user.age}`
+        age: `${user.age}`,
+        role: user.role
     }
+    res.redirect('/')
+
     res.send({
         status: "success",
         payload: req.session.user,

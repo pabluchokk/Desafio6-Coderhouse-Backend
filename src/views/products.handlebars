@@ -6,10 +6,11 @@
     <title>Productos</title>
 </head>
 <body>
-    <h1>Productos</h1>
+    <h1>Bienvenido, {{user.full_name}}</h1>
+    <h2>Productos</h2>
     {{#each productos}}
         <div>
-            <h2>{{title}}</h2>
+            <h3>{{title}}</h3>
             <p>Descripción: {{description}}</p>
             <p>Precio: ${{price}}</p>
             <p>Stock: {{stock}}</p>

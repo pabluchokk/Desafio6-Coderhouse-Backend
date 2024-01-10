@@ -11,6 +11,7 @@ import viewsRouter from './routes/views.router.js'
 import sessionRouter from './routes/session.routes.js'
 
 import __dirname from "./utils.js";
+import path from 'path'
 
 const PORT = 8080;
 const app = express();
@@ -21,7 +22,7 @@ const connection = mongoose.connect(MONGO)
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
-app.use(express.static(__dirname + "/public"))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
     store: new MongoStore({
